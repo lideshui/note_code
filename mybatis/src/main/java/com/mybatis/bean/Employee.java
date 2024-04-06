@@ -1,7 +1,10 @@
-package com.lds.bean;
+package com.mybatis.bean;
 
-
+/**
+ * employee员工表映射类
+ */
 public class Employee {
+
     private Integer id;
     private String lastName;
     private String email;

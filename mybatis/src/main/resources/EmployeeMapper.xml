@@ -7,7 +7,7 @@
         namespace属性
             设置该映射文件是哪个接口的映射文件，接口的全类名
 -->
-<mapper namespace="com.lds.dao.EmployeeDao">
+<mapper namespace="com.mybatis.dao.EmployeeMapper">
 
     <!--实现EmployeeDao接口中的抽象方法-->
     <!--
@@ -19,7 +19,7 @@
             标签体内容：
                 sql语句
     -->
-    <select id="findAll" resultType="com.lds.bean.Employee">
+    <select id="findAll" resultType="com.mybatis.bean.Employee">
         select id,last_name lastName,email,gender,salary,dept_id deptId from employees
     </select>
 
@@ -31,24 +31,26 @@
             标签体内容
                 sql语句，遇到占位符位置的值：#{id}
     -->
-    <select id="getById" parameterType="int" resultType="com.lds.bean.Employee">
+    <select id="getById" parameterType="int" resultType="com.mybatis.bean.Employee">
         select  id,last_name lastName,email,gender,salary,dept_id deptId
         from employees where id=#{id}
     </select>
 
-    <!--实现：void insert(Employee employee);
+    <!--实现：Employee insert(Employee employee);
         id: 方法名
         parameterType:参数类型
         没有返回类型
         标签体是sql语句
             遇到占位符，#{对象的属性名}
+        parameterType="Employee" useGeneratedKeys="true" keyProperty="id"
+        使用useGeneratedKeys和keyProperty属性来告诉MyBatis返回自动生成的主键
     -->
-    <insert id="insert" parameterType="com.lds.bean.Employee">
+    <insert id="insert" parameterType="com.mybatis.bean.Employee" useGeneratedKeys="true" keyProperty="id">
         insert into employees values(null,#{lastName},#{email},#{gender},#{salary},#{deptId})
     </insert>
 
     <!--实现：void update(Employee employee);-->
-    <update id="update" parameterType="com.lds.bean.Employee">
+    <update id="update" parameterType="com.mybatis.bean.Employee">
         update employees
         set last_name=#{lastName},email=#{email},gender=#{gender},salary=#{salary},dept_id=#{deptId}
         where id=#{id}
@@ -58,6 +60,5 @@
     <delete id="delete" parameterType="int">
         delete from employees where id=#{id}
     </delete>
-
 
 </mapper>

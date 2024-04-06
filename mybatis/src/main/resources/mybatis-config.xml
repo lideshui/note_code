@@ -22,7 +22,7 @@
 
     <!--加载刚刚创建的映射文件-->
     <mappers>
-        <mapper resource="EmployeeDao.xml"/>
+        <mapper resource="EmployeeMapper.xml"/>
     </mappers>
 
 </configuration>
