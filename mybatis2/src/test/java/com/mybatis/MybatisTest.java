@@ -10,6 +10,8 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * mybatis测试类
@@ -34,8 +36,8 @@ public class MybatisTest {
 
             // 2. 测试增删查改
             // 获取list集合
-            List<Employee> employeeList = employeeMapper.findAll();
-            employeeList.stream().forEach(System.out::println);
+//            List<Employee> employeeList = employeeMapper.findAll();
+//            employeeList.stream().forEach(System.out::println);
 
             // 根据id获取详情
 //            Employee byId = employeeMapper.getById(2);
@@ -63,6 +65,16 @@ public class MybatisTest {
 
             // 删除实例对象
 //            employeeMapper.delete(10);
+
+//            Map<String, Object> map = employeeMapper.getEmployeeByIdReturnMap(2);
+//            System.out.println("map = " + map);
+
+//            Map<Integer,Employee> maps = employeeMapper.getEmployeesReturnMap();
+//            System.out.println("maps = " + maps);
+
+            List<Map<String,Object>> list = employeeMapper.getEmployeesReturnListMap();
+            System.out.println("maps = " + list);
+
 
             //增删改是需要提交的，sqlSession对象去提交
             sqlSession.commit();

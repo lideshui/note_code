@@ -61,4 +61,17 @@
         delete from employees where id=#{id}
     </delete>
 
+    <select id="getEmployeeByIdReturnMap" parameterType="int" resultType="map">
+        select  id,last_name lastName,email,gender,salary,dept_id deptId
+        from employees where id=#{id}
+    </select>
+
+    <select id="getEmployeesReturnMap" resultType="map">
+        select id,last_name lastName,email,gender,salary,dept_id deptId from employees
+    </select>
+
+    <select id="getEmployeesReturnListMap" resultType="map">
+        select id,last_name lastName,email,gender,salary,dept_id deptId from employees
+    </select>
+
 </mapper>
