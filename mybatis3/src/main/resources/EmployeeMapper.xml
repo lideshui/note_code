@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    mapper是映射文件的根节点
+        namespace属性
+            设置该映射文件是哪个接口的映射文件，接口的全类名
+-->
+<mapper namespace="com.mybatis.mapper.EmployeeMapper">
+
+    <!--实现EmployeeDao接口中的抽象方法-->
+    <!--
+        实现：List<Employee> findAll();
+        select标签
+            id属性：你实现的哪个方法
+            parameterType属性：设置参数的类型(没有参数可以省略)
+            resultType属性： 设置数据映射的java类型
+            标签体内容：
+                sql语句
+    -->
+    <select id="findAll" resultType="com.mybatis.bean.Employee">
+        select id,last_name lastName,email,gender,salary,dept_id deptId from employees
+    </select>
+
+    <!--实现：Employee getById(Integer id);
+        select 查询
+            id属性：方法名
+            parameterType属性：参数类型
+            resultType属性：设置数据映射的java类型
+            标签体内容
+                sql语句，遇到占位符位置的值：#{id}
+    -->
+    <select id="getById" parameterType="int" resultType="com.mybatis.bean.Employee">
+        select  id,last_name lastName,email,gender,salary,dept_id deptId
+        from employees where id=#{id}
+    </select>
+
+    <!--实现：Employee insert(Employee employee);
+        id: 方法名
+        parameterType:参数类型
+        没有返回类型
+        标签体是sql语句
+            遇到占位符，#{对象的属性名}
+        parameterType="Employee" useGeneratedKeys="true" keyProperty="id"
+        使用useGeneratedKeys和keyProperty属性来告诉MyBatis返回自动生成的主键
+    -->
+    <insert id="insert" parameterType="com.mybatis.bean.Employee" useGeneratedKeys="true" keyProperty="id">
+        insert into employees values(null,#{lastName},#{email},#{gender},#{salary},#{deptId})
+    </insert>
+
+    <!--实现：void update(Employee employee);-->
+    <update id="update" parameterType="com.mybatis.bean.Employee">
+        update employees
+        set last_name=#{lastName},email=#{email},gender=#{gender},salary=#{salary},dept_id=#{deptId}
+        where id=#{id}
+    </update>
+
+    <!--void delete(Integer id);-->
+    <delete id="delete" parameterType="int">
+        delete from employees where id=#{id}
+    </delete>
+
+</mapper>

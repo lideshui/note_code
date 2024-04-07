@@ -7,7 +7,7 @@
         namespace属性
             设置该映射文件是哪个接口的映射文件，接口的全类名
 -->
-<mapper namespace="com.mybatis.dao.EmployeeMapper">
+<mapper namespace="com.mybatis.mapper.EmployeeMapper">
 
     <!--实现EmployeeDao接口中的抽象方法-->
     <!--

@@ -1,7 +1,7 @@
 package com.mybatis;
 
 import com.mybatis.bean.Employee;
-import com.mybatis.dao.EmployeeMapper;
+import com.mybatis.mapper.EmployeeMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -34,8 +34,8 @@ public class MybatisTest {
 
             // 2. 测试增删查改
             // 获取list集合
-//            List<Employee> employeeList = employeeMapper.findAll();
-//            employeeList.stream().forEach(System.out::println);
+            List<Employee> employeeList = employeeMapper.findAll();
+            employeeList.stream().forEach(System.out::println);
 
             // 根据id获取详情
 //            Employee byId = employeeMapper.getById(2);
@@ -62,7 +62,7 @@ public class MybatisTest {
 //            employeeMapper.update(editMap);
 
             // 删除实例对象
-            employeeMapper.delete(10);
+//            employeeMapper.delete(10);
 
             //增删改是需要提交的，sqlSession对象去提交
             sqlSession.commit();
