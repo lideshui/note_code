@@ -1,7 +1,7 @@
 package com.mybatis.bean;
 
 /**
- * employee员工表映射类
+ * employees员工表映射类
  */
 public class Employee {
 
@@ -12,16 +12,27 @@ public class Employee {
     private Double salary;
     private Integer deptId;
 
+    private Department department;
+
     public Employee() {
     }
 
-    public Employee(Integer id, String lastName, String email, Integer gender, Double salary, Integer deptId) {
+    public Employee(Integer id, String lastName, String email, Integer gender, Double salary, Integer deptId, Department department) {
         this.id = id;
         this.lastName = lastName;
         this.email = email;
         this.gender = gender;
         this.salary = salary;
         this.deptId = deptId;
+        this.department = department;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Integer getId() {
@@ -72,6 +83,7 @@ public class Employee {
         this.deptId = deptId;
     }
 
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -81,6 +93,7 @@ public class Employee {
                 ", gender=" + gender +
                 ", salary=" + salary +
                 ", deptId=" + deptId +
+                ", department=" + department +
                 '}';
     }
 }

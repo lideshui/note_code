@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--设置该映射文件对应接口的全类名-->
+<mapper namespace="com.mybatis.mapper.EmployeeMapper">
+
+
+    <select id="getEmp" resultType="employee">
+        SELECT * FROM employees
+        <!--if where    where不能去掉后面的and和or，但是却可动态处理前面的-->
+<!--        <where>-->
+<!--            &lt;!&ndash;第一个就直接拼接AND也没事，where标签会去掉&ndash;&gt;-->
+<!--            <if test="param1 != null">-->
+<!--                AND dept_id=#{param1}-->
+<!--            </if>-->
+<!--            <if test="param2 != null">-->
+<!--                AND gender=#{param2}-->
+<!--            </if>-->
+<!--        </where>-->
+
+        <!--
+            - prefix: 添加前缀
+            - prefixOverrides: 去掉前缀
+            - suffix: 添加后缀
+            - suffixOverrides: 去掉后缀
+            使用方式:
+                - 属性值中的“或”写成"｜"
+                - prefix=“WHERE”。是在trim标签的所有内容前面添加where，所有内容的if都为false时则不添加
+                - suffixOverrides="and|or”。意味着，如果 `<trim>` 标签内部的内容在拼接 SQL 时以 `and` 或 `or` 结尾，那么这两个字符会被覆盖掉。
+        -->
+        <trim prefix="WHERE" suffixOverrides="and|or">
+            <if test="param1 != null">
+                dept_id=#{param1} AND
+            </if>
+            <if test="param2 != null">
+                gender=#{param2} AND
+            </if>
+        </trim>
+    </select>
+
+    <update id="updateEmp">
+        UPDATE employees
+        <!--
+          set的功能也可以被trim标签所替代
+          主要使用在update语句当中，用来生成set关键字，同时去掉最后多余的“,”
+          必须要保证有一个条件是成立的，不然报错！！！
+        -->
+        <set>
+            <!--如果为null或者空串则不修改⚠️-->
+            <if test="lastName != null and lastName != ''">last_name=#{lastName},</if>
+            <if test="email != null">email=#{email},</if>
+            <if test="gender != null">gender=#{gender},</if>
+            <if test="salary != null">salary=#{salary},</if>
+            <if test="deptId != null">dept_id=#{deptId},</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+
+</mapper>

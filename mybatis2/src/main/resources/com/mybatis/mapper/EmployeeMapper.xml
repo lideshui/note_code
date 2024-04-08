@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--设置该映射文件对应接口的全类名-->
+<mapper namespace="com.mybatis.mapper.EmployeeMapper">
+
+    <!--级联查询手动映射-->
+    <resultMap id="empAsDeptMap" type="employee">
+        <id property="id" column="id"></id>
+        <result property="lastName" column="last_name"></result>
+        <result property="email" column="email"></result>
+        <result property="gender" column="gender"></result>
+        <result property="salary" column="salary"></result>
+        <!--级联属性赋值后，自动为其属性进行查询-->
+        <result property="department.id" column="did"></result>
+        <result property="department.name" column="dname"></result>
+    </resultMap>
+
+    <!--一对一关联查询手动映射-->
+    <resultMap id="empAsDeptMap2" type="employee">
+        <id property="id" column="id"></id>
+        <result property="lastName" column="last_name"></result>
+        <result property="email" column="email"></result>
+        <result property="gender" column="gender"></result>
+        <result property="salary" column="salary"></result>
+        <!--property：为employee中的属性做映射，javaType：指定映射的属性类型-->
+        <association property="department" javaType="department">
+            <result property="id" column="did"></result>
+            <result property="name" column="dname"></result>
+        </association>
+    </resultMap>
+
+    <!--一对一分步查询手动映射-->
+    <resultMap id="empAsDeptMap3" type="employee">
+        <id property="id" column="id"></id>
+        <result property="lastName" column="last_name"></result>
+        <result property="email" column="email"></result>
+        <result property="gender" column="gender"></result>
+        <result property="salary" column="salary"></result>
+        <!--二次查询，设置属性名、返回类型、查询方法、查询参数
+            - property属性：指定Employee中部门的属性名（把值放到哪个属性里），根据第二步查询结果给其赋值
+            - select属性：通过接口的全类名.方法名去锁定一个方法
+            - column属性：设置将第一条sql语句的查询结果的哪一列值，作为第二条sql语句的查询语句的参数
+        -->
+        <association
+                property="department"
+                javaType="department"
+                select="com.mybatis.mapper.DepartmentMapper.getDeptById"
+                column="id"
+                fetchType="lazy"
+        >
+        </association>
+    </resultMap>
+
+    <!--查询多行1-->
+    <select id="findAll" resultType="employee">
+        select id,last_name,email,gender,salary,dept_id deptId from employees
+    </select>
+
+    <!--查询多行2-->
+    <select id="findAllMap" parameterType="int" resultType="map">
+        select id,last_name,email,gender,salary,dept_id deptId from employees
+    </select>
+
+    <!--查询多行3-->
+    <select id="findAllList" resultType="map">
+        select id,last_name lastName,email,gender,salary,dept_id deptId from employees
+    </select>
+
+    <!--查询单行1-->
+    <select id="getById" parameterType="int" resultType="employee">
+        select  id,last_name lastName,email,gender,salary,dept_id deptId
+        from employees where id=#{id}
+    </select>
+
+    <!--查询单行2-->
+    <select id="getByIdMap" parameterType="int" resultType="map">
+        select  id,last_name lastName,email,gender,salary,dept_id deptId
+        from employees where id=#{id}
+    </select>
+
+    <!--级联查询-->
+    <select id="getByIdAsDept" parameterType="int" resultMap="empAsDeptMap">
+        SELECT e.id, e.last_name, e.email, e.gender, e.salary, d.id did, d.name dname FROM employees e LEFT JOIN departments d ON e.dept_id = d.id WHERE e.id=#{id}
+    </select>
+
+    <!--一对一关联查询-->
+    <select id="getByIdAsDept2" parameterType="int" resultMap="empAsDeptMap2">
+        SELECT e.id, e.last_name, e.email, e.gender, e.salary, d.id did, d.name dname FROM employees e LEFT JOIN departments d ON e.dept_id = d.id WHERE e.id=#{id}
+    </select>
+
+    <!--一对一分步查询-->
+    <select id="getByIdAsDept3" resultMap="empAsDeptMap3">
+        select  id,last_name,email,gender,salary,dept_id deptId
+        from employees where id=#{id}
+    </select>
+
+</mapper>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--设置该映射文件对应接口的全类名-->
+<mapper namespace="com.mybatis.mapper.DepartmentMapper">
+
+    <!--id为引用该自定义映射的标识，type为最后返回的类型，可以用employee来接收，但是我喜欢用map接收，便于后续处理⚠️-->
+    <resultMap id="empMap" type="map">
+        <!--id和result功能一样，用来映射bean类的属性和sql的查询字段，一般写表关联的主键ID-->
+        <!--property是属性，column是字段-->
+        <id property="id" column="eid"></id>
+        <!--当满足驼峰匹配和自动映射时也推荐写全映射属性，不然多表查询有问题⚠️-->
+        <result property="lastName" column="ename"></result>
+        <result property="email" column="email"></result>
+        <result property="gender" column="gender"></result>
+        <result property="salary" column="salary"></result>
+    </resultMap>
+
+    <resultMap id="deptMmp" type="department">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <!--ofType其实是可以省略的，在定义empList时给了泛型了已经，mybatis知道根据empMap应该往里面塞什么值⚠️-->
+        <collection property="empList" ofType="employee" resultMap="empMap" />
+    </resultMap>
+
+    <!--关联查询一对多的手动映射-->
+    <resultMap id="deptMmp2" type="department">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <!--property：集合的属性名，ofType：集合的泛型，即集合存储的什么类型的对象，其实这儿的ofType也可以写成map⚠️-->
+        <collection property="empList" ofType="employee">
+            <id property="id" column="eid"></id>
+            <result property="lastName" column="ename"></result>
+            <result property="email" column="email"></result>
+            <result property="gender" column="gender"></result>
+            <result property="salary" column="salary"></result>
+        </collection>
+    </resultMap>
+
+    <!--分步查询一对多的手动映射-->
+    <resultMap id="deptMmp3" type="department">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <!--二次查询，设置属性名、返回类型、查询方法、查询参数
+            - property属性：将第一步查询到的值传过去，当做发起第二步查询的参数
+            - select属性：通过接口的全类名.方法名去锁定一个方法
+            - column属性：设置将第一条sql语句的查询结果的哪一列值，作为第二条sql语句的查询语句的参数
+        -->
+        <collection
+                property="empList"
+                ofType="map"
+                column="id"
+                select="com.mybatis.mapper.EmployeeMapper.findAllByDeptId"
+                fetchType="lazy"
+        >
+            <id property="id" column="id"></id>
+            <result property="name" column="last_name"></result>
+            <result property="email" column="email"></result>
+            <result property="gender" column="gender"></result>
+            <result property="salary" column="salary"></result>
+        </collection>
+    </resultMap>
+
+    <!--分步查询一对多的手动映射，传递多个参数版本-->
+    <resultMap id="deptMmp4" type="department">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <!--二次查询，设置属性名、返回类型、查询方法、查询参数
+            - property属性：将第一步查询到的值传过去，当做发起第二步查询的参数
+            - select属性：通过接口的全类名.方法名去锁定一个方法
+            - column属性：传递的值只能是第一次查询到的字段值，传递多个时{查询参数名1=column1,查询参数名2=column2}
+        -->
+        <collection
+                property="empList"
+                ofType="map"
+                column="{deptId=id,salary=test }"
+                select="com.mybatis.mapper.EmployeeMapper.findAllByDeptIdAndSalary"
+                fetchType="lazy"
+        >
+            <id property="id" column="id"></id>
+            <result property="name" column="last_name"></result>
+            <result property="email" column="email"></result>
+            <result property="gender" column="gender"></result>
+            <result property="salary" column="salary"></result>
+        </collection>
+    </resultMap>
+
+    <!--根据id查询部门信息及部门下的所有员工-->
+    <!--这里用手动映射resultMap-->
+    <select id="findDeptById" resultMap="deptMmp">
+        SELECT d.id, d.name, e.id eid, e.last_name ename, e.email, e.gender, e.salary FROM departments d LEFT JOIN employees e on d.id = e.dept_id WHERE d.id = #{id}
+    </select>
+
+    <!--关联查询一对多-->
+    <select id="findDeptById2" resultMap="deptMmp2">
+        SELECT d.id, d.name, e.id eid, e.last_name ename, e.email, e.gender, e.salary FROM departments d LEFT JOIN employees e on d.id = e.dept_id WHERE d.id = #{id}
+    </select>
+
+    <!--分步查询一对多-->
+    <select id="findDeptById3" resultMap="deptMmp3">
+        SELECT id, name FROM departments WHERE id =#{ID}
+    </select>
+
+    <!--分步查询一对多，第二步传递多个查询参数-->
+    <select id="findDeptById4" resultMap="deptMmp4">
+        SELECT id, name, '88888.00' test FROM departments WHERE id =#{ID}
+    </select>
+
+</mapper>

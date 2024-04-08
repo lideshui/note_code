@@ -5,24 +5,40 @@
 <!--configuration根节点-->
 <configuration>
 
-    <!--mybtais的环境    后期数据库的信息，交给Spring管理
-        将数据库的连接信息设置给MyBatis即可
-    -->
+    <!--配置属性-->
+    <properties>
+        <property name="jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbc.url" value="jdbc:mysql://47.120.67.11:23306/ssm"/>
+        <property name="jdbc.username" value="root"/>
+        <property name="jdbc.password" value="Hggl@2023#"/>
+    </properties>
+
+    <settings>
+        <!-- -驼峰自动映射-->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+    <typeAliases>
+        <!--为com.mybatis包下的所有类设置别名，默认就是自动驼峰的类名-->
+        <package name="com.mybatis"/>
+    </typeAliases>
+
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://47.120.67.11:23306/ssm"/>
-                <property name="username" value="root"/>
-                <property name="password" value="Hggl@2023#"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
 
     <!--加载刚刚创建的映射文件-->
     <mappers>
-        <mapper resource="EmployeeMapper.xml"/>
+        <!--将包内的mapper接口全部注册为映射器，目录结构和文件名必须与接口一致-->
+        <package name="com.mybatis.mapper"/>
     </mappers>
 
 </configuration>
