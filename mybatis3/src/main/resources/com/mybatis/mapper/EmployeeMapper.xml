@@ -6,19 +6,44 @@
 <!--设置该映射文件对应接口的全类名-->
 <mapper namespace="com.mybatis.mapper.EmployeeMapper">
 
+    <!--开启二级缓存-->
+<!--    <cache/>-->
 
-    <select id="getEmp" resultType="employee">
-        SELECT * FROM employees
+    <!--使用第三方二级缓存-->
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"></cache>
+
+    <!--抽取sql-->
+    <sql id="empColumn">
+        id,
+        last_name,
+        email,
+        gender,
+        salary,
+        dept_id
+    </sql>
+
+
+    <select id="getEmp1" resultType="employee">
+        SELECT
+        <include refid="empColumn"></include>
+        FROM employees
         <!--if where    where不能去掉后面的and和or，但是却可动态处理前面的-->
-<!--        <where>-->
-<!--            &lt;!&ndash;第一个就直接拼接AND也没事，where标签会去掉&ndash;&gt;-->
-<!--            <if test="param1 != null">-->
-<!--                AND dept_id=#{param1}-->
-<!--            </if>-->
-<!--            <if test="param2 != null">-->
-<!--                AND gender=#{param2}-->
-<!--            </if>-->
-<!--        </where>-->
+        <where>
+            <!--第一个就直接拼接AND也没事，where标签会去掉-->
+            <if test="param1 != null">
+                AND dept_id=#{param1}
+            </if>
+            <if test="param2 != null">
+                AND gender=#{param2}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getEmp2" resultType="employee">
+        SELECT
+        <include refid="empColumn"></include>
+        FROM employees
 
         <!--
             - prefix: 添加前缀
@@ -40,7 +65,32 @@
         </trim>
     </select>
 
-    <update id="updateEmp">
+
+    <select id="getEmp3" resultType="employee">
+        SELECT
+        <include refid="empColumn"></include>
+        FROM employees
+
+        <!--
+            等同于switch(case、default)只要有一个分支执行了，其他分支都不被执行，但一定有一个分支被执行
+
+            使用方式：
+              - 根据部门、性别、薪资其中之一进行查找
+              - 查找的优先级从上到下，等同于switch，没满足的条件走otherwise
+        -->
+        <where>
+            <choose>
+                <when test="param1!=null">dept_id=#{param1}</when>
+                <when test="param2!=null">gender=#{param2}</when>
+                <otherwise>
+                    salary=#{param3}
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+
+    <update id="updateEmp" >
         UPDATE employees
         <!--
           set的功能也可以被trim标签所替代
@@ -58,5 +108,58 @@
         WHERE id=#{id}
     </update>
 
+
+
+    <!--
+        接下来都是动态sql   foreach
+        循环数组或集合，动态生成sql，常用于批量删除和批量插入
+
+        动态生成语句例子：
+
+        - 批量删除-IN：DELETE FROM employees WHERE id IN(1,2,3)
+        - 批量删除-OR：DELETE FROM employees WHERE id=25 OR id=26 OR id=27
+        - 批量插入：INSERT INTO employees VALUES(null,"小黑",null,0,666,2),(...),(...)
+
+        使用方法：
+
+        - collection: 要迭代的数组或集合
+          - **注意：底层会转换为map集合，必须使用注解、arg0或者array、collection等类型名称才能取到值！**
+        - item: 代表数组或集合中的元素
+          - Item为bean对象时，取属性值格式为：对象.属性名
+
+        - open: 开始字符，拼接的sql语句最前面
+        - close:结束字符，拼接的sql语句最后面
+        - separator: 元素与元素之间的分隔符
+        - index:
+          - 迭代的是List集合: index表示的当前元素的下标
+          - 迭代的Map集合: index表示的当前元素的key
+    -->
+    <delete id="deleteByIds">
+        DELETE FROM employees WHERE id IN
+        <foreach collection="array" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <!--其实批量删除用OR也可以-->
+    <delete id="deleteByIdsOr">
+        DELETE FROM employees WHERE
+        <foreach collection="array" item="id" separator="OR">
+            id=#{id}
+        </foreach>
+    </delete>
+
+
+    <insert id="insertMany">
+        INSERT INTO employees VALUES
+        <foreach collection="collection" item="emp" separator=",">
+            (null,
+            #{emp.lastName},
+            #{emp.email},
+            #{emp.gender},
+            #{emp.salary},
+            #{emp.deptId})
+        </foreach>
+    </insert>
 
 </mapper>

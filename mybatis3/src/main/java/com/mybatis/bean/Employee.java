@@ -1,9 +1,11 @@
 package com.mybatis.bean;
 
+import java.io.Serializable;
+
 /**
  * employees员工表映射类
  */
-public class Employee {
+public class Employee implements Serializable {
 
     private Integer id;
     private String lastName;

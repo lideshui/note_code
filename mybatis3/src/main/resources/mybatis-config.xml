@@ -5,6 +5,7 @@
 <!--configuration根节点-->
 <configuration>
 
+
     <!--配置属性-->
     <properties>
         <property name="jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
