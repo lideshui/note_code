@@ -1,6 +1,7 @@
 package com.spring;
 
-import com.spring.pojo.HelloWorld;
+import com.spring.pojo.Department;
+import com.spring.pojo.Employee;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,7 +17,10 @@ public class SpringTest {
         // 创建IoC容器
         ApplicationContext ioc = new ClassPathXmlApplicationContext("applicationContext.xml");
         //从IoC容器内取出Bean对象
-        HelloWorld hello = ioc.getBean(HelloWorld.class);
-        hello.sayHello();
+        Employee employee = ioc.getBean(Employee.class);
+        employee.printInfo();
+
+        Department department = ioc.getBean(Department.class);
+        department.printName();
     }
 }
