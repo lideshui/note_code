@@ -1,12 +1,17 @@
 package com.spring.pojo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 /**
  * 员工类
  */
+@Component
 public class Employee {
 
     private String name;
 
+    @Autowired
     private Department department;
 
     public Employee() {
@@ -31,11 +36,6 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
-    }
-
-    public void printInfo(){
-        System.out.println(this.name);
-        department.printName();
     }
 
     @Override

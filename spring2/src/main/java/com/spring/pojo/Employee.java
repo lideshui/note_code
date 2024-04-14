@@ -33,11 +33,6 @@ public class Employee {
         this.department = department;
     }
 
-    public void printInfo(){
-        System.out.println(this.name);
-        department.printName();
-    }
-
     @Override
     public String toString() {
         return "Employee{" +
