@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--扫描注解-->
+    <context:component-scan base-package="com.spring"></context:component-scan>
+
+
+    <!--DefaultTransactionDefinition : 适用于增删改操作-->
+    <bean id="definition1"  class="org.springframework.transaction.support.DefaultTransactionDefinition">
+        <!--传播行为-->
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"></property>
+        <!--隔离级别-->
+        <property name="isolationLevelName" value="ISOLATION_REPEATABLE_READ"></property>
+        <!--超时-->
+        <property name="timeout" value="30"></property>
+        <!--只读性，readOnly=true适用于查询 , readOnly=false适用于增删改-->
+        <property name="readOnly" value="false"></property>
+    </bean>
+
+
+    <!--DefaultTransactionDefinition : 适用于查询操作-->
+    <bean id="definition2" class="org.springframework.transaction.support.DefaultTransactionDefinition">
+        <!--传播行为-->
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRED"></property>
+        <!--隔离级别-->
+        <property name="isolationLevelName" value="ISOLATION_REPEATABLE_READ"></property>
+        <!--超时-->
+        <property name="timeout" value="30"></property>
+        <!--只读性，readOnly=true适用于查询 , readOnly=false适用于增删改-->
+        <property name="readOnly" value="true"></property>
+    </bean>
+</beans>
