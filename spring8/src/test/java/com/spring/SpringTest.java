@@ -1,30 +1,27 @@
 package com.spring;
 
-import com.spring.controller.EmployeeController;
-import com.spring.pojo.Employee;
+import com.spring.service.UserService;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * spring测试类
  */
+@ContextConfiguration(locations = "classpath:applicationContext.xml")
+@RunWith(SpringJUnit4ClassRunner.class)
 public class SpringTest {
 
+    @Autowired
+    UserService userService;
+
     @Test
-    public void test01(){
-        //从类的根路径下加载配置文件，将配置文件内的bean都实例化，放到IoC容器内
-        // 创建IoC容器
-        ApplicationContext ioc = new ClassPathXmlApplicationContext("applicationContext.xml");
-        //从IoC容器内取出Bean对象
-        EmployeeController employeeController = ioc.getBean(EmployeeController.class);
-
-        employeeController.addEmp();
-//
-//
-//        Employee employeeController = ioc.getBean(Employee.class);
-//
-//        System.out.println(employeeController);
-
+    public void test01() {
+        userService.transfer(
+                "aa",
+                "bb",
+                1000.0);
     }
 }

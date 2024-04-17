@@ -6,25 +6,25 @@ import java.util.List;
 public interface EmployeeService {
 
     /**
-     * 链接点-切入点
+     * 新增
      * @param employee
      */
     void add(Employee employee);
 
     /**
-     * 链接点-切入点
+     * 删除
      * @param id
      */
     void delete(Integer id);
 
     /**
-     * 链接点
+     * 查找
      * @return
      */
     List<Employee> findAll();
 
     /**
-     * 链接点
+     * 修改
      * @param employee
      */
     void update(Employee employee);

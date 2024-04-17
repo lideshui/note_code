@@ -12,7 +12,10 @@
         <module name="spring3" />
         <module name="spring2" />
         <module name="spring1" />
+        <module name="spring8" />
+        <module name="spring7" />
         <module name="mybatis3" />
+        <module name="spring6" />
         <module name="spring5" />
       </profile>
     </annotationProcessing>
