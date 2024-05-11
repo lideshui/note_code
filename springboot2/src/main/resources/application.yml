@@ -1,0 +1,24 @@
+server:
+  port: 10001
+
+spring:
+  #配置连接数据库的相关信息
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #MySql驱动低于8.0.23需要指定时区：?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.120.67.11:23306/spring_transaction
+    username: root
+    password: Hggl@2023#
+    type: com.alibaba.druid.pool.DruidDataSource
+  #配置Redis
+  redis:
+    host: 47.120.67.11
+    port: 26379
+    password: Hggl@2023#
+
+mybatis:
+  #指定给哪个包下的类起别名
+  type-aliases-package: com.atguigu.springboot.pojo
+  #配置该属性是为了打印SQL语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

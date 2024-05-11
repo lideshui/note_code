@@ -3,10 +3,7 @@ package com.springMVC.service;
 import com.springMVC.pojo.Employee;
 import java.util.Collection;
 
-/**
- * @Description: TODD
- * @AllClassName: com.atguigu.service.EmployeeService
- */
+
 public interface EmployeeService {
     //展示所有员工对象
     Collection<Employee> showAllEmp();

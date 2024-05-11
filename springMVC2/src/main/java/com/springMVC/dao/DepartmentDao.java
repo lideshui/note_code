@@ -1,6 +1,5 @@
 package com.springMVC.dao;
 
-
 import com.springMVC.pojo.Department;
 import org.springframework.stereotype.Repository;
 import java.util.Collection;
@@ -10,7 +9,6 @@ import java.util.Map;
 /**
  * 部门表dao层
  */
-
 @Repository
 public class DepartmentDao {
 

@@ -5,13 +5,9 @@ import com.springMVC.pojo.Employee;
 import com.springMVC.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 
-/**
- * @Description: TODD
- * @AllClassName: com.atguigu.service.EmployeeService
- */
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     @Autowired

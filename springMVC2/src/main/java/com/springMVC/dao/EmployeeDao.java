@@ -9,11 +9,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @Description: TODD
- * @AllClassName: com.atguigu.dao.EmployeeDao
- */
-
 @Repository
 public class EmployeeDao {
 
