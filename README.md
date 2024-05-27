@@ -50,7 +50,7 @@
 
 [springcloud04](./springcloud04)：Hystrix断路器的配置、Hystrix服务降级、Hystrix服务熔断、Hystrix豪猪仪表盘
 
-[springcloud05](./springcloud05)：GateWay网关的配置、GateWay的动态路由和负载均衡、GateWay的断言Predicate、GateWay的过滤器Filter
+[springcloud05](./springcloud05)：GateWay网关的配置、GateWay的动态路由和负载均衡、断言Predicate、过滤器Filter
 
 [springcloud06](./springcloud06)：ZipKin分布式链路请求跟踪
 
