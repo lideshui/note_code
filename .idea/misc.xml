@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/springboot1" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC01" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC02" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC1" />
+    <file type="web" url="file://$PROJECT_DIR$/springMVC2" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -16,10 +23,75 @@
         <option value="$PROJECT_DIR$/spring6/pom.xml" />
         <option value="$PROJECT_DIR$/spring7/pom.xml" />
         <option value="$PROJECT_DIR$/spring8/pom.xml" />
+        <option value="$PROJECT_DIR$/spring10/pom.xml" />
+        <option value="$PROJECT_DIR$/spring9/pom.xml" />
+        <option value="$PROJECT_DIR$/spring11/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC1/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC2/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot1/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot2/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud1/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud2/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud2/cloud_api_commons/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud2/cloud_eureka_server7001/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud3/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud3/cloud_eureka_server7001/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud3/cloud_provider_payment8001/pom.xml" />
+        <option value="$PROJECT_DIR$/redis-spring-boot-autoconfigure/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-starter-test/pom.xml" />
+        <option value="$PROJECT_DIR$/redis-spring-boot-test/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud4/cloud_eureka_server7001/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud4/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot3/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot4/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud5/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud5/cloud_api_commons/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud5/cloud_provider_payment8001/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud5/cloud_eureka_server7001/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud6/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud6/cloud_provider_payment8001/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud6/cloud_consumer_order80/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud6/cloud_eureka_server7001/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud7/cloud_api_commons/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud7/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud8/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud8/cloudalibaba_sentinel_service8401/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis01/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis03/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis02/pom.xml" />
+        <option value="$PROJECT_DIR$/spring01/pom.xml" />
+        <option value="$PROJECT_DIR$/spring02/pom.xml" />
+        <option value="$PROJECT_DIR$/spring03/pom.xml" />
+        <option value="$PROJECT_DIR$/spring04/pom.xml" />
+        <option value="$PROJECT_DIR$/spring05/pom.xml" />
+        <option value="$PROJECT_DIR$/spring06/pom.xml" />
+        <option value="$PROJECT_DIR$/spring07/pom.xml" />
+        <option value="$PROJECT_DIR$/spring08/pom.xml" />
+        <option value="$PROJECT_DIR$/spring09/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot01/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot02/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot03/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot04/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud01/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud02/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud03/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud04/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud05/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud06/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud07/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud08/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC01/pom.xml" />
+        <option value="$PROJECT_DIR$/springMVC02/pom.xml" />
       </list>
     </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/springcloud1/cloud_eureka_server7001/pom.xml" />
+        <option value="$PROJECT_DIR$/springcloud4/cloud_consumer_feign_order80/pom.xml" />
+      </set>
+    </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

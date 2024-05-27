@@ -2,27 +2,103 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="mybatis1" />
-        <module name="spring4" />
-        <module name="mybatis2" />
-        <module name="spring3" />
-        <module name="spring2" />
-        <module name="spring1" />
-        <module name="spring8" />
-        <module name="spring7" />
-        <module name="mybatis3" />
-        <module name="spring6" />
-        <module name="spring5" />
+        <module name="cloud_provider_hystrix_payment8001" />
+        <module name="cloud_provider_payment8001 (4)" />
+        <module name="springMVC01" />
+        <module name="springMVC02" />
+        <module name="spring10" />
+        <module name="spring11" />
+        <module name="cloud_consumer_feign_order80" />
+        <module name="cloudalibaba_sentinel_service8401" />
+        <module name="cloud_api_commons (3)" />
+        <module name="cloud_provider_payment8001" />
+        <module name="cloud_consumer_hystrix_dashboard9001" />
+        <module name="cloud_eureka_server7001 (3)" />
+        <module name="cloud_api_commons (7)" />
+        <module name="cloud_provider_payment8001 (3)" />
+        <module name="spring01" />
+        <module name="cloud_consumer_order80 (1)" />
+        <module name="spring02" />
+        <module name="spring07" />
+        <module name="spring08" />
+        <module name="spring09" />
+        <module name="cloud_api_commons (4)" />
+        <module name="spring03" />
+        <module name="cloudalibaba_config_nacos_client3377" />
+        <module name="spring04" />
+        <module name="spring05" />
+        <module name="spring06" />
+        <module name="cloud_eureka_server7001 (2)" />
+        <module name="cloudalibaba_provider_payment9001" />
+        <module name="cloud_provider_payment8001 (2)" />
+        <module name="cloud_consumer_order80 (2)" />
+        <module name="cloudalibaba_consumer_nacos_order83" />
+        <module name="springboot04" />
+        <module name="springboot03" />
+        <module name="springboot02" />
+        <module name="springboot01" />
+        <module name="cloud_api_commons (5)" />
+        <module name="mybatis03" />
+        <module name="cloud_eureka_server7001 (1)" />
+        <module name="mybatis01" />
+        <module name="mybatis02" />
+        <module name="cloud_api_commons (1)" />
+        <module name="cloud_api_commons" />
+        <module name="cloud_eureka_server7001" />
+        <module name="cloud_gateway_gateway9527" />
+        <module name="cloud_consumer_order80" />
+        <module name="cloud_provider_payment8001 (1)" />
+        <module name="cloud_api_commons (6)" />
+        <module name="cloud_eureka_server7001 (4)" />
+        <module name="cloud_consumer_feign_hystrix_order80" />
+        <module name="cloud_api_commons (2)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring3 (1)" target="1.8" />
-      <module name="spring3 (2)" target="1.8" />
-      <module name="studymybatis" target="1.8" />
+      <module name="cloud_consumer_feign_order80 (1)" target="1.8" />
+      <module name="mybatis1" target="1.8" />
+      <module name="mybatis3" target="1.8" />
+      <module name="spring1" target="1.8" />
+      <module name="spring2" target="1.8" />
+      <module name="spring3" target="1.8" />
+      <module name="spring4" target="1.8" />
+      <module name="spring5" target="1.8" />
+      <module name="spring6" target="1.8" />
+      <module name="spring7" target="1.8" />
+      <module name="spring8" target="1.8" />
+      <module name="spring9" target="1.8" />
+      <module name="springboot1" target="1.8" />
+      <module name="springboot2" target="1.8" />
+      <module name="springboot3" target="1.8" />
+      <module name="springboot4" target="1.8" />
+      <module name="springcloud1" target="1.8" />
+      <module name="springcloud1 (1)" target="1.8" />
+      <module name="springcloud2" target="1.8" />
+      <module name="springcloud3" target="1.8" />
+      <module name="springcloud4" target="1.8" />
+      <module name="springcloud5" target="1.8" />
+      <module name="springcloud6" target="1.8" />
+      <module name="springcloud7" target="1.8" />
+      <module name="springcloud8" target="1.8" />
+      <module name="springMVC1" target="1.8" />
+      <module name="springMVC2" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot01" options="-parameters" />
+      <module name="springboot02" options="-parameters" />
+      <module name="springboot03" options="-parameters" />
+      <module name="springboot04" options="-parameters" />
+      <module name="springboot1" options="-parameters" />
+      <module name="springboot2" options="-parameters" />
+      <module name="springboot3" options="-parameters" />
+      <module name="springboot4" options="-parameters" />
+    </option>
   </component>
 </project>

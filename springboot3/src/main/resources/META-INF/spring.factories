@@ -1,4 +1,0 @@
-# Auto Configure
-# Set ConfigClass AllName Return Spring Bean
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.springboot.config.JedisAutoConfiguration
