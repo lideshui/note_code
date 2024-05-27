@@ -1,0 +1,39 @@
+server:
+  port: 10001
+
+spring:
+  #配置连接数据库的相关信息
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #MySql驱动低于8.0.23需要指定时区：?serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://47.120.67.11:23306/springboot?characterEncoding=utf-8&&useInformationSchema=true
+    username: root
+    password: Hggl@2023#
+    type: com.alibaba.druid.pool.DruidDataSource
+  #配置Redis
+  redis:
+    host: 47.120.67.11
+    port: 26379
+    password: Hggl@2023#
+
+mybatis:
+  #指定给哪个包下的类起别名
+  type-aliases-package: com.springboot.pojo
+  #配置该属性是为了打印SQL语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # 对外暴露的访问入口, 默认是/health和/info这两个情况，*是暴漏所有情况
+        include: '*'
+        # 如果不设置，则默认是/actuator路径
+      base-path: /monitor
+  endpoint:
+    health:
+      # 显示所有健康状态
+      show-details: ALWAYS
+  server:
+    port: 9999

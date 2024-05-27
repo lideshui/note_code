@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--添加父工程坐标-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.6.RELEASE</version>
+    </parent>
+
+    <groupId>com.lds</groupId>
+    <artifactId>springboot01</artifactId>
+    <version>1.0</version>
+
+    <!--jdk插件已经在父工程中定义好了 , 默认会读取${java.version}变量值-->
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <!--添加从父工程集成的web启动器-->
+        <!--无需指定启动器版本，我们指定了项目的父工程，在spring-boot-starter-parent中已经通过Maven的版本锁定了Jar包的版本，所以就不需要再指定了-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+</project>

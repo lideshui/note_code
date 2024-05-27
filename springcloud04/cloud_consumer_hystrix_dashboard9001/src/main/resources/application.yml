@@ -1,0 +1,6 @@
+server:
+  port: 9001
+hystrix:
+  dashboard:
+    #监控所有微服务
+    proxy-stream-allow-list: "*"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--让spring来管理HelloWord类-->
+<!--    <bean id="helloWord" class="com.spring.pojo.Employee">-->
+<!--        &lt;!&ndash;属性注入，注入普通类型，使用value注入&ndash;&gt;-->
+<!--        <property name="name" value="tom"/>-->
+<!--        &lt;!&ndash;属性注入，注入引用类型，需要提供set方法，使用ref注入&ndash;&gt;-->
+<!--        <property name="department" ref="department666666"/>-->
+<!--    </bean>-->
+
+    <bean id="helloWord" class="com.spring.pojo.Employee" autowire="byType">
+        <!--属性注入，注入普通类型，使用value注入-->
+        <property name="name" value="tom"/>
+    </bean>
+
+    <bean id="department" class="com.spring.pojo.Department">
+        <!--属性注入-->
+        <property name="name" value="sale dept"/>
+    </bean>
+
+    <bean id="employeeDao" class="com.spring.dao.EmployeeDao" autowire="byType"></bean>
+    <bean id="employeeService" class="com.spring.service.impl.EmployeeServiceImpl" autowire="byType"></bean>
+    <bean id="employeeController" class="com.spring.controller.EmployeeController" autowire="byType"></bean>
+
+
+</beans>

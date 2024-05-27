@@ -1,0 +1,37 @@
+server:
+  port: 80
+spring:
+  application:
+    name: cloud-consumer-feign-order80
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+
+#设置Feign客户端超时时间（openfeign默认支持ribbon）
+ribbon:
+  #读超时的时间
+  ReadTimeout:  3000
+  #连接超时的时间
+  ConnectTimeout: 3000
+  MaxAutoRetries: 5 #同一台实例最大重试次数,不包括首次调用
+  MaxAutoRetriesNextServer: 2 #当访问失败时，尝试切换到其他服务实例的最大次数,不包括首次调用
+  OkToRetryOnAllOperations: false #非Get请求是否重试，容易重复添加⚠️
+
+#hystrix的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true #指定是否启用超时
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000 #指定线程隔离的超时时间（以毫秒为单位）
+
+#开启OpenFeign日志打印功能
+logging:
+  level:
+    com.springcloud.service.PaymentFeignService: debug

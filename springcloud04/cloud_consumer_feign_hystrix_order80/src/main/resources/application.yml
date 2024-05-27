@@ -1,0 +1,20 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-consumer-hystrix-order
+
+eureka:
+  client:
+    #表示向注册中心注册自己
+    register-with-eureka: true
+    #表示需要去注册中心检索服务
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+
+feign:
+  hystrix:
+    #开启消费者端降级，如果处理自身的容错就开启。开启方式与生产端不一样。
+    enabled: true

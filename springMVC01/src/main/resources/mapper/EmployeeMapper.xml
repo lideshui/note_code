@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--设置该映射文件对应接口的全类名-->
+<mapper namespace="com.spring.dao.EmployeeDao">
+
+    <!--查询多行-->
+    <select id="findAll" resultType="employee">
+        select id,last_name,email,gender,salary,dept_id deptId from employees
+    </select>
+
+    <!--查询单行-->
+    <select id="getById" parameterType="int" resultType="employee">
+        select  id,last_name lastName,email,gender,salary,dept_id deptId
+        from employees where id=#{id}
+    </select>
+
+</mapper>

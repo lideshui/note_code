@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "spring.redis",
+      "type": "com.springboot.properties.JedisProperties",
+      "sourceType": "com.springboot.properties.JedisProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.redis.host",
+      "type": "java.lang.String",
+      "sourceType": "com.springboot.properties.JedisProperties"
+    },
+    {
+      "name": "spring.redis.password",
+      "type": "java.lang.String",
+      "sourceType": "com.springboot.properties.JedisProperties"
+    },
+    {
+      "name": "spring.redis.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.springboot.properties.JedisProperties"
+    }
+  ],
+  "hints": []
+}
