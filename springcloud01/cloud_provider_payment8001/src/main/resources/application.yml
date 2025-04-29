@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://47.120.67.11:23306/springboot?characterEncoding=utf-8&&useInformationSchema=true
     username: root
-    password: Hggl@2023#
+    password: A1helloworld.
 
 mybatis:
   #映射文件路径

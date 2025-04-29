@@ -91,10 +91,10 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="springboot01" options="-parameters" />
-      <module name="springboot02" options="-parameters" />
-      <module name="springboot03" options="-parameters" />
-      <module name="springboot04" options="-parameters" />
+      <module name="springboot01" options="" />
+      <module name="springboot02" options="" />
+      <module name="springboot03" options="" />
+      <module name="springboot04" options="" />
       <module name="springboot1" options="-parameters" />
       <module name="springboot2" options="-parameters" />
       <module name="springboot3" options="-parameters" />
